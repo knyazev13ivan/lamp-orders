@@ -1,0 +1,26 @@
+@import "./variables.scss";
+
+nav {
+  margin: 20px 30px;
+
+  ul {
+    display: flex;
+
+    list-style: none;
+
+    .link {
+      padding: 7px 10px;
+
+      color: $text-color;
+      text-decoration: none;
+
+      &:hover {
+        color: $lite-red;
+      }
+    }
+
+    .active {
+      border-bottom: 1px solid $pink;
+    }
+  }
+}

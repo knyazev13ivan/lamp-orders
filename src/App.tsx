@@ -1,13 +1,23 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
+import Navigation from "./components/Navigation";
+import HomePage from "./pages/HomePage";
+import Login from "./pages/Login";
+import NewOrder from "./pages/NewOrder";
+import UserProfile from "./pages/UserProfile";
+import "./styles/app.scss";
 
 function App() {
   return (
-    <Routes>
-      <Route />
-      <Route />
-    </Routes>
+    <>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/new" element={<NewOrder />} />
+        <Route path="/auth/login" element={<Login />} />
+        <Route path="/auth/me" element={<UserProfile />} />
+      </Routes>
+    </>
   );
 }
 

@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import "../styles/newOrder.scss";
 
 const NewOrder = () => {
-  return (
-    <div>NewOrder</div>
-  )
-}
+  return <div>NewOrder</div>;
+};
 
-export default NewOrder
+export default NewOrder;
