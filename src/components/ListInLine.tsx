@@ -1,13 +1,13 @@
 import React from "react";
 import {
   IOrderInLine,
-  useGetOrdersQuery,
+  useGetOrdersInLineQuery,
 } from "../store/orderInLine/orderInLine.api";
 import CardInLine from "./CardInLine";
 import "../styles/listInLine.scss";
 
 const ListInLine: React.FC = () => {
-  const { data: orders, error, isLoading } = useGetOrdersQuery("");
+  const { data: orders, error, isLoading } = useGetOrdersInLineQuery("");
 
   return (
     <>

@@ -1,19 +1,14 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { orderInLineApi } from "./orderInLine/orderInLine.api";
-import { authApi } from "./auth/auth.api";
+import { baseApi } from "./base.api";
 import authReducer from "./auth/authSlice";
 
 export const store = configureStore({
   reducer: {
-    [orderInLineApi.reducerPath]: orderInLineApi.reducer,
-    [authApi.reducerPath]: authApi.reducer,
+    [baseApi.reducerPath]: baseApi.reducer,
     auth: authReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([
-      orderInLineApi.middleware,
-      authApi.middleware,
-    ]),
+    getDefaultMiddleware().concat(baseApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

@@ -1,5 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { RootState } from "../store";
+import { baseApi } from "../base.api";
 
 export interface User {
   login: string;
@@ -24,32 +23,22 @@ export interface IAuthParams {
   password: string;
 }
 
-export const authApi = createApi({
-  reducerPath: "auth/api",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3001/",
-    prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as RootState).auth.token;
-      if (token) {
-        headers.set("authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
+export const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    getUser: build.query<any, any>({
+    getUser: build.query<UserResponse, string>({
       query: () => ({
-        url: "auth/me",
+        url: "/auth/me",
       }),
     }),
     signIn: build.mutation<UserResponse, LoginRequest>({
       query: (params) => ({
-        url: "auth/login",
+        url: "/auth/login",
         method: "POST",
         body: params,
       }),
     }),
   }),
+  overrideExisting: false,
 });
 
 export const { useSignInMutation, useGetUserQuery } = authApi;

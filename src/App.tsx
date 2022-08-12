@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation";
+import CreateNewLamp from "./pages/CreateNewLamp";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import NewOrder from "./pages/NewOrder";
@@ -16,6 +17,7 @@ function App() {
         <Route path="/new" element={<NewOrder />} />
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/me" element={<UserProfile />} />
+        <Route path="/lamps" element={<CreateNewLamp />} />
       </Routes>
     </>
   );

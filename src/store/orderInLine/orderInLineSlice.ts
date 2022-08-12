@@ -1,14 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchOrdersInLine } from "./actionCreators";
-import { PayloadAction } from "@reduxjs/toolkit";
-
-export interface IOrderInLine {
-  _id: string;
-  name: string;
-  number: number;
-  priority: number;
-  text: string;
-}
+import { IOrderInLine } from "./orderInLine.api";
 
 const initialState: IOrderInLine[] = [
   {
@@ -24,11 +15,6 @@ const orderInLineSlice = createSlice({
   name: "orderInLine",
   initialState,
   reducers: {},
-  extraReducers: {
-    [fetchOrdersInLine.fulfilled.type]: (state, action: PayloadAction<IOrderInLine>) => {
-      // state.isLoading = false
-    },
-  }
 });
 
 export const orderInLineReducer = orderInLineSlice.reducer;

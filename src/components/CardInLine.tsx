@@ -1,7 +1,7 @@
 import React from "react";
 import {
   IOrderInLine,
-  useDeleteOrderMutation,
+  useDeleteOrderInLineMutation,
 } from "../store/orderInLine/orderInLine.api";
 import "../styles/cardInLine.scss";
 
@@ -14,7 +14,7 @@ const CardInLine: React.FC<IOrderInLine> = ({
 }: IOrderInLine) => {
   const priorityClass = "priority-" + priority;
 
-  const [deleteOrder] = useDeleteOrderMutation();
+  const [deleteOrder] = useDeleteOrderInLineMutation();
 
   const handleClickDelete = async () => {
     await deleteOrder(_id);

@@ -1,5 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { RootState } from "../store";
+import { baseApi } from "../base.api";
 
 export interface IOrderInLine {
   _id: string;
@@ -9,42 +8,34 @@ export interface IOrderInLine {
   text: string;
 }
 
-export const orderInLineApi = createApi({
-  reducerPath: "orderInLine/api",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3001/",
-    prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as RootState).auth.token;
-      if (token) {
-        headers.set("authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
-  tagTypes: ['Order'],
+export const orderInLineApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    getOrders: build.query<IOrderInLine[], string>({
+    getOrdersInLine: build.query<IOrderInLine[], string>({
       query: () => ({
-        url: "orders-in-line",
+        url: "/orders-in-line",
       }),
-      providesTags : result => ['Order']
+      providesTags: (result) => ["OrderInLine"],
     }),
-    createOrder: build.mutation<IOrderInLine, IOrderInLine>({
+    createOrderInLine: build.mutation<IOrderInLine, IOrderInLine>({
       query: (order) => ({
-        url: 'orders-in-line',
-        method: 'POST',
-        body: order
+        url: "/orders-in-line",
+        method: "POST",
+        body: order,
       }),
-      invalidatesTags: ['Order']
+      invalidatesTags: ["OrderInLine"],
     }),
-    deleteOrder: build.mutation<IOrderInLine, string>({
+    deleteOrderInLine: build.mutation<IOrderInLine, string>({
       query: (id) => ({
-        url: `orders-in-line/${id}`,
-        method: 'DELETE',
+        url: `/orders-in-line/${id}`,
+        method: "DELETE",
       }),
-      invalidatesTags: ['Order']
+      invalidatesTags: ["OrderInLine"],
     }),
   }),
 });
 
-export const { useGetOrdersQuery, useCreateOrderMutation, useDeleteOrderMutation } = orderInLineApi;
+export const {
+  useGetOrdersInLineQuery,
+  useCreateOrderInLineMutation,
+  useDeleteOrderInLineMutation,
+} = orderInLineApi;

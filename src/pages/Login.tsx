@@ -25,15 +25,18 @@ const Login: React.FC = () => {
     e.preventDefault();
     const user = await signIn(formState).unwrap();
     dispatch(setCredentials(user));
-    // navigate("/");
+    navigate("/");
   };
-
-  const handleClickLogout = async () => await dispatch(logout);
+  
+  const handleClickLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
 
   return (
     <>
       <h1>Login</h1>
-      <form onSubmit={(e) => handleSubmitSignIn(e)}>
+      <form onSubmit={handleSubmitSignIn}>
         <fieldset>
           Username
           <input
@@ -52,10 +55,10 @@ const Login: React.FC = () => {
             id="passwordField"
           />
           <button type="submit">Sign in</button>
-          <button type="button" onClick={handleClickLogout}>
-            Logout
-          </button>
         </fieldset>
+        <button type="button" onClick={handleClickLogout}>
+          Logout
+        </button>
       </form>
       {isLoadingUser && <div>'Loading...'</div>}
       {errorUser && console.log("errorUser: ", errorUser)}
