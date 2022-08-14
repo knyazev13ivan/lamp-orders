@@ -1,16 +1,50 @@
-import React from "react";
-import { IOperation } from "../store/orderInProgress/orderInProgress.api";
+import React, { useRef } from "react";
+import {
+  IOperation,
+  useToogleIsDoneMutation,
+} from "../store/orderInProgress/orderInProgress.api";
+import "../styles/progressSteps.scss";
 
-const ProgressSteps: React.FC<{operations: IOperation[]}> = ({operations}) => {
+export interface IProgressStep {
+  id: string;
+  step: "locksmith" | "painter" | "millwright";
+  operations: IOperation[];
+}
+
+const ProgressSteps: React.FC<IProgressStep> = ({ id, step, operations }) => {
+  const [toogleIsDone, { error }] = useToogleIsDoneMutation();
+  const opers = useRef<IOperation[]>(operations);
+
+  const handleClickToogle = async (index: number) => {
+    opers.current = opers.current.map((oper, ind) => {
+      return index !== ind ? oper : { ...oper, isDone: !oper.isDone };
+    });
+
+    await toogleIsDone({
+      id: id,
+      step: step,
+      operations: [...opers.current],
+    });
+  };
+
   return (
-    <ul>
-      {operations &&
-        operations.map((operation, ind) => (
-          <li key={operation.name + ind}>
-            {operation.name + " " + operation.isDone}
-          </li>
-        ))}
-    </ul>
+    <>
+      {error && JSON.stringify(error)}
+      <ul>
+        {opers.current &&
+          opers.current.map(({ name, isDone }, index) => {
+            return (
+              <li key={name + index} className="operation">
+                <span>{name}</span>
+                <button onClick={() => handleClickToogle(index)}>
+                  {isDone.toString()}
+                </button>
+              </li>
+            );
+          })}
+      </ul>
+      <hr />
+    </>
   );
 };
 

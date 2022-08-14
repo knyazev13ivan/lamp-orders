@@ -22,8 +22,6 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
     await deleteOrder(_id);
   };
 
-  console.log(locksmith);
-
   return (
     <div className="card-in-progress">
       <p>
@@ -38,9 +36,9 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
       <p>Колличество: {order.number} шт.</p>
       <p>Комментарий: {order.text}</p>
       <hr />
-      <ProgressSteps operations={locksmith} />
-      <ProgressSteps operations={painter} />
-      <ProgressSteps operations={millwright} />
+      <ProgressSteps operations={locksmith} id={_id} step="locksmith" />
+      <ProgressSteps operations={painter} id={_id} step="painter" />
+      <ProgressSteps operations={millwright} id={_id} step="millwright" />
     </div>
   );
 };

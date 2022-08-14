@@ -14,14 +14,6 @@ export interface LoginRequest {
   login: string;
   password: string;
 }
-export interface IAuth {
-  data: null;
-}
-
-export interface IAuthParams {
-  login: string;
-  password: string;
-}
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({

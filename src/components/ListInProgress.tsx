@@ -12,7 +12,7 @@ const ListInProgress: React.FC = () => {
   return (
     <>
       {error && <div>Oh no, there was an error</div>}
-      {isLoading && <div>Loading...</div>}
+      {isLoading && 'Loading...'}
       <ul className="list-in-progress">
         {orders &&
           orders.map((order: IOrderInProgress) => (

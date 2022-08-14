@@ -3,6 +3,7 @@ import {
   IOrderInLine,
   useDeleteOrderInLineMutation,
 } from "../store/orderInLine/orderInLine.api";
+import { useCreateOrderInProgressMutation } from "../store/orderInProgress/orderInProgress.api";
 import "../styles/cardInLine.scss";
 
 const CardInLine: React.FC<IOrderInLine> = ({
@@ -14,19 +15,22 @@ const CardInLine: React.FC<IOrderInLine> = ({
 }: IOrderInLine) => {
   const priorityClass = "priority-" + priority;
 
-  const [deleteOrder] = useDeleteOrderInLineMutation();
+  const [deleteOrderInLine] = useDeleteOrderInLineMutation();
+  const [createOrderInProgress, { error: errorCreateOrderInProgress }] =
+    useCreateOrderInProgressMutation();
 
   const handleClickDelete = async () => {
-    await deleteOrder(_id);
+    await deleteOrderInLine(_id);
   };
 
   const handleClickStart = async () => {
-    // await 
-    await deleteOrder(_id);
+    await createOrderInProgress({ id: _id });
+    await deleteOrderInLine(_id);
   };
 
   return (
     <div className="card">
+      {errorCreateOrderInProgress && JSON.stringify(errorCreateOrderInProgress)}
       <p>
         Приоритет:
         <span className={priorityClass}>
