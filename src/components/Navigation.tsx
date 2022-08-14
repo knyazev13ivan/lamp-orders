@@ -32,6 +32,14 @@ const Navigation = () => {
         </li>
         <li>
           <NavLink
+            to="auth/register"
+            className={({ isActive }) => (isActive ? "active " : "") + "link"}
+          >
+            Registration
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="auth/me"
             className={({ isActive }) => (isActive ? "active " : "") + "link"}
           >
