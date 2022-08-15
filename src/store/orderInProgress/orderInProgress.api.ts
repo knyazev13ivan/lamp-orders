@@ -42,6 +42,17 @@ export const orderInProgressApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["OrderInProgress"],
     }),
+    toogleIsPause: build.mutation<
+      IOrderInProgress,
+      { id: string; step: string; operations: boolean }
+    >({
+      query: (order) => ({
+        url: "/orders-in-progress",
+        method: "PUT",
+        body: order,
+      }),
+      invalidatesTags: ["OrderInProgress"],
+    }),
     deleteOrderInProgress: build.mutation<IOrderInProgress, string>({
       query: (id) => ({
         url: `/orders-in-progress/${id}`,

@@ -1,61 +1,82 @@
-import React from "react";
+import React, { FormEvent, useState } from "react";
+import SelectOperations from "../components/SelectOperations";
+import { useAppSelector } from "../store/hooks";
 import {
   useCreateLampMutation,
+  useGetAllLampsQuery,
   useGetLampQuery,
 } from "../store/lamps/lamp.api";
+import { IOperationField } from "../store/operations/operationsSlice";
 
 const CreateNewLamp: React.FC = () => {
+  const { locksmith, painter, millwright } = useAppSelector(
+    (state) => state.operations
+  );
+
   const {
     data: lamp,
     isLoading: isLoadingGetLamp,
     error: errorGetLamp,
   } = useGetLampQuery("test1");
+
+  const { data: allLamps } = useGetAllLampsQuery("");
+
+  const [formState, setFormState] = useState<{ name: string }>({
+    name: "D-140",
+  });
+
+  const handleChange = ({
+    target: { name, value },
+  }: React.ChangeEvent<HTMLInputElement>) =>
+    setFormState((prev) => ({ ...prev, [name]: value }));
+
   const [
     createLamp,
     { error: errorCreateLamp, isLoading: isLoadingCreateLamp },
   ] = useCreateLampMutation();
 
-  const handleClickCreateLamp = () => {
+  const handleSubmitCreateLamp = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const formatting = (opers: IOperationField[]): string[] =>
+      opers.filter((oper) => oper.isIncluded).map((oper) => oper.name);
+
     createLamp({
-      name: "DL-420",
-      locksmith: [
-        "нарезка профеля",
-        "выпрямление корпуса",
-        "фрезеровка для гермоввода",
-        "фрезеровка места под планки",
-        "гравировка",
-        "сверление отверстий для гермоввода",
-        "обработка отверстий",
-        "подготовка к покраске",
-      ],
-      painter: [
-        "подвешивание к покрасочной линии",
-        "очистка перед покраской",
-        "покраска",
-        "прогрев в печи",
-        "остывание",
-        "снятие защитных заглушек",
-      ],
-      millwright: [
-        "подготовка места для монтажа платы",
-        "монтаж платы",
-        "нарезка проводов",
-        "пайка элементов",
-        "монтаж линз",
-        "установка планок",
-        "герметизация",
-        "тесты работоспособности",
-      ],
+      name: formState.name,
+      locksmith: formatting(locksmith),
+      painter: formatting(painter),
+      millwright: formatting(millwright),
     });
   };
 
   return (
     <div>
+      <hr />
+      <h3>{allLamps && allLamps.map((lamp) => lamp.name).join(" | ")}</h3>
+      <hr />
       {isLoadingGetLamp && "Loading..."}
       {errorGetLamp && JSON.stringify(errorGetLamp)}
-      {lamp && JSON.stringify(lamp, null, 2)}
+      {lamp && "getLamp: " + lamp.name}
       <br />
-      <button onClick={handleClickCreateLamp}>Create New Lamp</button>
+      <br />
+      <form onSubmit={handleSubmitCreateLamp}>
+        <fieldset>
+          Lamp name
+          <input
+            type="text"
+            value={formState.name}
+            onChange={handleChange}
+            name="name"
+            id="nameField"
+          />
+          <SelectOperations operations={locksmith} step="locksmith" />
+          <SelectOperations operations={painter} step="painter" />
+          <SelectOperations operations={millwright} step="millwright" />
+          <button type="submit">Create!</button>
+        </fieldset>
+      </form>
+      <hr />
+      <br />
       {isLoadingCreateLamp && "Creating lamp..."}
       {errorCreateLamp && JSON.stringify(errorCreateLamp)}
     </div>

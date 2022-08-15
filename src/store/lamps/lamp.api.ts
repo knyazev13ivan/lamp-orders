@@ -14,6 +14,11 @@ export const lampApi = baseApi.injectEndpoints({
         url: `/lamps/${name}`,
       }),
     }),
+    getAllLamps: build.query<ILamp[], string>({
+      query: () => ({
+        url: `/lamps/`,
+      }),
+    }),
     createLamp: build.mutation<ILamp, ILamp>({
       query: (lamp) => ({
         url: "/lamps",
@@ -24,4 +29,4 @@ export const lampApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetLampQuery, useCreateLampMutation } = lampApi;
+export const { useGetLampQuery, useGetAllLampsQuery, useCreateLampMutation } = lampApi;
