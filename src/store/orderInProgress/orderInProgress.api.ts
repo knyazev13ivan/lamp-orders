@@ -68,4 +68,5 @@ export const {
   useCreateOrderInProgressMutation,
   useDeleteOrderInProgressMutation,
   useToogleIsDoneMutation,
+  useToogleIsPauseMutation,
 } = orderInProgressApi;

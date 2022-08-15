@@ -2,6 +2,7 @@ import React from "react";
 import {
   IOrderInProgress,
   useDeleteOrderInProgressMutation,
+  useToogleIsPauseMutation,
 } from "../store/orderInProgress/orderInProgress.api";
 import "../styles/cardInProgress.scss";
 import ProgressSteps from "./ProgressSteps";
@@ -17,9 +18,14 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
   const priorityClass = "priority-" + order.priority;
 
   const [deleteOrder] = useDeleteOrderInProgressMutation();
+  const [toogleIsPause] = useToogleIsPauseMutation();
 
   const handleClickDelete = async () => {
     await deleteOrder(_id);
+  };
+
+  const handleClickToogleIsPause = async () => {
+    await toogleIsPause({ id: _id, step: "isPause", operations: !isPause });
   };
 
   return (
@@ -31,7 +37,12 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
         </span>
         <button onClick={handleClickDelete}>Delete</button>
       </p>
-      <p>Статус: {isPause ? "Не активно" : "Активно"}</p>
+      <p>
+        Статус:
+        <button onClick={handleClickToogleIsPause}>
+          {isPause ? "Не активно" : "Активно"}
+        </button>
+      </p>
       <h3>{order.name}</h3>
       <p>Колличество: {order.number} шт.</p>
       <p>Комментарий: {order.text}</p>
