@@ -4,8 +4,15 @@ import {
   useDeleteOrderInProgressMutation,
   useToogleIsPauseMutation,
 } from "../store/orderInProgress/orderInProgress.api";
-import "../styles/cardInProgress.scss";
 import ProgressSteps from "./ProgressSteps";
+import { formatDate } from "../utils/formatDate";
+import svgDelete from "../icons/delete.svg";
+import svgComment from "../icons/comment.svg";
+import svgTime from "../icons/time.svg";
+import svgPlay from "../icons/play.svg";
+import svgPause from "../icons/pause.svg";
+import svgCompliteOrder from "../icons/compliteOrder.svg";
+import "../styles/cardInProgress.scss";
 
 const CardInProgress: React.FC<IOrderInProgress> = ({
   _id,
@@ -15,12 +22,20 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
   millwright,
   isPause,
 }: IOrderInProgress) => {
-  const priorityClass = "priority-" + order.priority;
+  const cardClass = `card-in-progress priority-${order.priority} ${
+    isPause ? "pause" : ""
+  }`;
 
   const [deleteOrder] = useDeleteOrderInProgressMutation();
   const [toogleIsPause] = useToogleIsPauseMutation();
 
   const handleClickDelete = async () => {
+    if (window.confirm("Вы точно отменить заказ?")) {
+      await deleteOrder(_id);
+    }
+  };
+
+  const handleClickEndOrder = async () => {
     await deleteOrder(_id);
   };
 
@@ -29,24 +44,56 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
   };
 
   return (
-    <div className="card-in-progress">
-      <p>
+    <div className={cardClass}>
+      <span className="priority">
         Приоритет:
-        <span className={priorityClass}>
-          {order.priority === 2 ? " Срочный" : " Обычный"}
+        {order.priority === 0 && " На склад"}
+        {order.priority === 1 && " Обычный"}
+        {order.priority === 2 && " Срочный"}
+      </span>
+
+      <span className="time">
+        <img src={svgTime} alt="time" />
+        {formatDate(order.createdAt)}
+      </span>
+
+      <h3>
+        <span className="name">
+          {order.name}
+          <button className="end-order" onClick={handleClickEndOrder}>
+            <img src={svgCompliteOrder} alt="complite order" />
+            Завершить
+          </button>
         </span>
-        <button onClick={handleClickDelete}>Delete</button>
-      </p>
-      <p>
-        Статус:
-        <button onClick={handleClickToogleIsPause}>
-          {isPause ? "Не активно" : "Активно"}
+
+        <span className="number">{order.number} шт</span>
+
+        <button onClick={handleClickToogleIsPause} className="toogle-pause">
+          {isPause ? (
+            <span>
+              <img src={svgPlay} alt="play" />
+              Продолжить
+            </span>
+          ) : (
+            <span>
+              <img src={svgPause} alt="pause" />
+              Остановить
+            </span>
+          )}
         </button>
-      </p>
-      <h3>{order.name}</h3>
-      <p>Колличество: {order.number} шт.</p>
-      <p>Комментарий: {order.text}</p>
-      <hr />
+      </h3>
+
+      {order.text && (
+        <p className="comment">
+          <img src={svgComment} alt="comment" />
+          {order.text}
+        </p>
+      )}
+
+      <button className="delete-button" onClick={handleClickDelete}>
+        <img src={svgDelete} alt="delete order" />
+      </button>
+
       <ProgressSteps operations={locksmith} id={_id} step="locksmith" />
       <ProgressSteps operations={painter} id={_id} step="painter" />
       <ProgressSteps operations={millwright} id={_id} step="millwright" />

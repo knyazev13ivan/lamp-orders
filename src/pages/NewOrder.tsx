@@ -18,11 +18,13 @@ const NewOrder = () => {
   const { data: allLamps } = useGetAllLampsQuery("");
 
   const [formState, setFormState] = useState<INewOrder>({
-    name: "D-140",
+    name: "",
     number: 1,
     priority: 0,
-    text: "test new order",
+    text: "",
   });
+
+  const priorities = ["На склад", "Обычный", "Срочный"];
 
   const handleChange = ({
     target: { name, value },
@@ -32,12 +34,6 @@ const NewOrder = () => {
   const handleSubmitCreateLamp = async (e: FormEvent) => {
     e.preventDefault();
 
-    // const order = {
-    //   name: "test2",
-    //   number: 4,
-    //   priority: 0,
-    //   text: "test api mutation",
-    // };
     await createOrder(formState as IOrderInLine);
   };
 
@@ -76,14 +72,22 @@ const NewOrder = () => {
           />
           <br />
           Priority:
-          <input
-            type="number"
-            name="priority"
-            value={formState.priority}
-            onChange={handleChange}
-            min={0}
-            max={2}
-          />
+          <ul>
+            {priorities.map((priority, index) => (
+              <li key={priority + index}>
+                <label>
+                  <input
+                    type="radio"
+                    name="priority"
+                    onChange={() =>
+                      setFormState((prev) => ({ ...prev, priority: index }))
+                    }
+                  />
+                  {priority}
+                </label>
+              </li>
+            ))}
+          </ul>
           <br />
           Text:
           <input

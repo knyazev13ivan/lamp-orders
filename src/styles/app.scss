@@ -4,3 +4,11 @@ body {
   color: $text-color;
   background-color: $bg-color;
 }
+
+button {
+  border: none;
+
+  color: $text-color;
+  background-color: transparent;
+  cursor: pointer;
+}

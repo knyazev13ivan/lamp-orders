@@ -17,7 +17,7 @@ const CreateNewLamp: React.FC = () => {
     data: lamp,
     isLoading: isLoadingGetLamp,
     error: errorGetLamp,
-  } = useGetLampQuery("test1");
+  } = useGetLampQuery("D-140");
 
   const { data: allLamps } = useGetAllLampsQuery("");
 

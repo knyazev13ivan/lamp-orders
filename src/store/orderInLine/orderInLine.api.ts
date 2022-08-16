@@ -6,6 +6,7 @@ export interface IOrderInLine {
   number: number;
   priority: number;
   text: string;
+  createdAt: string
 }
 
 export const orderInLineApi = baseApi.injectEndpoints({

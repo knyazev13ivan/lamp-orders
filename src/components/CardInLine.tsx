@@ -4,6 +4,11 @@ import {
   useDeleteOrderInLineMutation,
 } from "../store/orderInLine/orderInLine.api";
 import { useCreateOrderInProgressMutation } from "../store/orderInProgress/orderInProgress.api";
+import { formatDate } from "../utils/formatDate";
+import svgDelete from "../icons/delete.svg";
+import svgArrowRight from "../icons/arrowRight.svg";
+import svgComment from "../icons/comment.svg";
+import svgTime from "../icons/time.svg";
 import "../styles/cardInLine.scss";
 
 const CardInLine: React.FC<IOrderInLine> = ({
@@ -12,6 +17,7 @@ const CardInLine: React.FC<IOrderInLine> = ({
   number,
   priority,
   text,
+  createdAt,
 }: IOrderInLine) => {
   const priorityClass = "priority-" + priority;
 
@@ -20,7 +26,9 @@ const CardInLine: React.FC<IOrderInLine> = ({
     useCreateOrderInProgressMutation();
 
   const handleClickDelete = async () => {
-    await deleteOrderInLine(_id);
+    if (window.confirm("Вы точно отменить заказ?")) {
+      await deleteOrderInLine(_id);
+    }
   };
 
   const handleClickStart = async () => {
@@ -29,21 +37,41 @@ const CardInLine: React.FC<IOrderInLine> = ({
   };
 
   return (
-    <div className="card">
+    <div className={"card-in-line " + priorityClass}>
       {errorCreateOrderInProgress && JSON.stringify(errorCreateOrderInProgress)}
-      <p>
+
+      <p className={"priority "}>
         Приоритет:
-        <span className={priorityClass}>
-          {priority === 2 ? " Срочный" : " Обычный"}
-        </span>
-        <button onClick={handleClickDelete}>Delete</button>
+        {priority === 0 && " На склад"}
+        {priority === 1 && " Обычный"}
+        {priority === 2 && " Срочный"}
       </p>
-      <h3>{name}</h3>
-      <p>Колличество: {number} шт.</p>
-      <p>Комментарий: {text}</p>
-      <div>
-        <button onClick={handleClickStart}>Принять заказ &gt;&gt;</button>
-      </div>
+
+      <span className="time">
+        <img src={svgTime} alt="time" />
+        {formatDate(createdAt)}
+      </span>
+
+      <h3>
+        <span className="name">{name}</span>
+        <span className="number">{number} шт</span>
+      </h3>
+
+      {text && (
+        <p className="comment">
+          <img src={svgComment} alt="comment" />
+          {text}
+        </p>
+      )}
+
+      <button className="start-order" onClick={handleClickStart}>
+        Принять заказ
+        <img src={svgArrowRight} alt="start order" />
+      </button>
+
+      <button className="delete-button" onClick={handleClickDelete}>
+        <img src={svgDelete} alt="delete order" />
+      </button>
     </div>
   );
 };
