@@ -1,7 +1,7 @@
 @import "./variables.scss";
 
-nav {
-  margin: 20px 30px;
+.nav-menu {
+  padding: 20px 30px;
 
   ul {
     display: flex;
@@ -20,7 +20,7 @@ nav {
     }
 
     .active {
-      border-bottom: 1px solid $pink;
+      border-bottom: 1px solid $lite-red;
     }
   }
 }

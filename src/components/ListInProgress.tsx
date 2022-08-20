@@ -12,12 +12,15 @@ const ListInProgress: React.FC = () => {
   return (
     <>
       {error && <div>Oh no, there was an error</div>}
-      {isLoading && 'Loading...'}
+      {isLoading && "Loading..."}
       <ul className="list-in-progress">
         {orders &&
-          orders.map((order: IOrderInProgress) => (
-            <CardInProgress key={order._id} {...order} />
-          ))}
+          orders
+            .slice(0)
+            .sort((a, b) => b.order.priority - a.order.priority)
+            .map((order: IOrderInProgress) => (
+              <CardInProgress key={order._id} {...order} />
+            ))}
       </ul>
     </>
   );

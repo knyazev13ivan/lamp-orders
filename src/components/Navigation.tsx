@@ -4,7 +4,7 @@ import "../styles/navigation.scss";
 
 const Navigation = () => {
   return (
-    <nav>
+    <nav className="nav-menu">
       <ul>
         <li>
           <NavLink
@@ -24,34 +24,10 @@ const Navigation = () => {
         </li>
         <li>
           <NavLink
-            to="auth/login"
-            className={({ isActive }) => (isActive ? "active " : "") + "link"}
-          >
-            Sign in
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="auth/register"
-            className={({ isActive }) => (isActive ? "active " : "") + "link"}
-          >
-            Registration
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="auth/me"
-            className={({ isActive }) => (isActive ? "active " : "") + "link"}
-          >
-            Me
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
             to="lamps"
             className={({ isActive }) => (isActive ? "active " : "") + "link"}
           >
-            Lamps
+            Создать новый тип
           </NavLink>
         </li>
       </ul>

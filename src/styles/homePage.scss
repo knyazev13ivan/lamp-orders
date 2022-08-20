@@ -3,5 +3,17 @@
 .homepage {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+
+  min-width: 900px;
+
+  .list-name {
+    margin-left: 10px;
+    padding: 3px 5px;
+
+    font-size: 1.1em;
+    font-style: italic;
+    
+    opacity: 0.7;
+  }
 }

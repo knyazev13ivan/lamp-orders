@@ -89,6 +89,7 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
           {order.text}
         </p>
       )}
+      {!order.text && <br />}
 
       <button className="delete-button" onClick={handleClickDelete}>
         <img src={svgDelete} alt="delete order" />

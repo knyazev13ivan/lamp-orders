@@ -6,8 +6,14 @@ import "../styles/homePage.scss";
 const HomePage: React.FC = () => {
   return (
     <div className="homepage">
-      <ListInLine />
-      <ListInProgress />
+      <div>
+        <h3 className="list-name">Очередь заказов</h3>
+        <ListInLine />
+      </div>
+      <div>
+        <h3 className="list-name">Производство</h3>
+        <ListInProgress />
+      </div>
     </div>
   );
 };

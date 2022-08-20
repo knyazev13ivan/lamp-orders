@@ -15,9 +15,12 @@ const ListInLine: React.FC = () => {
       {isLoading && <div>Loading...</div>}
       <ul className="list-in-line">
         {orders &&
-          orders.map((order: IOrderInLine) => (
-            <CardInLine key={order._id} {...order} />
-          ))}
+          orders
+            .slice(0)
+            .sort((a, b) => b.priority - a.priority)
+            .map((order: IOrderInLine) => (
+              <CardInLine key={order._id} {...order} />
+            ))}
       </ul>
     </>
   );

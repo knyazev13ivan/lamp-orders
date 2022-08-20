@@ -34,14 +34,15 @@
   .end-order {
     position: relative;
 
-    padding-left: 10px;
+    margin-left: 10px;
 
     font-size: 0.6em;
 
     opacity: 0;
 
     transform: translateY(-101%);
-    transition: all ease 0.3s;
+    // transition: all ease 0.3s;
+    transition: transform ease 0.3s, opacity ease 0.3s;
 
     img {
       padding: 2px 4px;
@@ -115,8 +116,8 @@
 
   .delete-button {
     position: absolute;
-    top: 77px;
-    right: 9px;
+    top: 73px;
+    right: 6px;
 
     opacity: 0.2;
   }

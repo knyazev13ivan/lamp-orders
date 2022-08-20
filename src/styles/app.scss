@@ -1,14 +1,39 @@
 @import "./variables.scss";
 
 body {
+  display: flex;
+  justify-content: center;
+
   color: $text-color;
   background-color: $bg-color;
 }
 
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+footer {
+  display: flex;
+  
+  margin: 0 auto;
+  
+  padding-left: 20px;
+  height: 50px;
+}
+
 button {
+  padding: 5px 8px;
+
   border: none;
+  border-radius: 3px;
 
   color: $text-color;
   background-color: transparent;
   cursor: pointer;
+
+  &:hover {
+    background: $hover-button;
+  }
 }

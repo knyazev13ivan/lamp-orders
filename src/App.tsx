@@ -1,5 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Auth from "./components/Auth";
+import Contacts from "./components/Contacts";
 import Navigation from "./components/Navigation";
 import CreateNewLamp from "./pages/CreateNewLamp";
 import HomePage from "./pages/HomePage";
@@ -12,7 +14,10 @@ import "./styles/app.scss";
 function App() {
   return (
     <>
-      <Navigation />
+      <header>
+        <Navigation />
+        <Auth />
+      </header>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/new" element={<NewOrder />} />
@@ -21,6 +26,9 @@ function App() {
         <Route path="/auth/me" element={<UserProfile />} />
         <Route path="/lamps" element={<CreateNewLamp />} />
       </Routes>
+      <footer>
+        <Contacts />
+      </footer>
     </>
   );
 }
