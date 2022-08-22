@@ -3,15 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { RegisterRequest, useRegisterMutation } from "../store/auth/auth.api";
 import { setCredentials } from "../store/auth/authSlice";
 import { useAppDispatch } from "../store/hooks";
+import svgClose from "../icons/close.svg";
+import "../styles/registration.scss";
 
-const Register = () => {
+const Registration = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const [formState, setFormState] = useState<RegisterRequest>({
-    login: "test1",
-    password: "test1",
-    fullName: "test1",
+    login: "",
+    password: "",
+    fullName: "",
   });
 
   const [register, { isLoading: isLoadingUser, error: errorUser }] =
@@ -29,12 +31,19 @@ const Register = () => {
     navigate("/");
   };
 
+  const handleClickClose = () => {
+    navigate("/");
+  };
+
   return (
-    <div>
-      <h1>Registeration</h1>
+    <div className="registration-page">
+      <h2>Регистрация</h2>
+      <button onClick={handleClickClose} className="button-close">
+        <img src={svgClose} alt="close" />
+      </button>
       <form onSubmit={handleSubmitSignIn}>
-        <fieldset>
-          Username
+        <label className="label-text-field">
+          <span className="label-text">Логин</span>
           <input
             type="text"
             value={formState.login}
@@ -42,7 +51,9 @@ const Register = () => {
             name="login"
             id="loginField"
           />
-          Password
+        </label>
+        <label className="label-text-field">
+          <span className="label-text">Пароль</span>
           <input
             type="password"
             value={formState.password}
@@ -50,7 +61,9 @@ const Register = () => {
             name="password"
             id="passwordField"
           />
-          fullName
+        </label>
+        <label className="label-text-field">
+          <span className="label-text">Имя</span>
           <input
             type="text"
             value={formState.fullName}
@@ -58,8 +71,10 @@ const Register = () => {
             name="fullName"
             id="fullNameField"
           />
-          <button type="submit">Sign in</button>
-        </fieldset>
+        </label>
+        <button type="submit" className="sign-up button-sign-up">
+          Готово
+        </button>
       </form>
       {isLoadingUser && <div>'Loading...'</div>}
       {errorUser && JSON.stringify(errorUser)}
@@ -67,4 +82,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Registration;

@@ -1,8 +1,10 @@
 import React, { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginRequest, useSignInMutation } from "../store/auth/auth.api";
 import { setCredentials } from "../store/auth/authSlice";
 import { useAppDispatch } from "../store/hooks";
+import svgClose from "../icons/close.svg";
+import "../styles/login.scss";
 
 const Login: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -28,33 +30,50 @@ const Login: React.FC = () => {
     navigate("/");
   };
 
+  const handleClickClose = () => {
+    navigate("/");
+  };
+
   return (
-    <>
-      <h1>Login</h1>
+    <div className="login-page">
+      <h2>Вход</h2>
+      <button onClick={handleClickClose} className="button-close">
+        <img src={svgClose} alt="close" />
+      </button>
       <form onSubmit={handleSubmitSignIn}>
-        <fieldset>
-          Username
+        <label className="label-text-field">
+          <span className="label-text">Логин</span>
           <input
             type="text"
             value={formState.login}
             onChange={handleChange}
             name="login"
-            id="loginField"
+            id="loginInput"
           />
-          Password
+        </label>
+        <label className="label-text-field">
+          <span className="label-text">Пароль</span>
           <input
             type="password"
             value={formState.password}
             onChange={handleChange}
             name="password"
-            id="passwordField"
+            id="passwordInput"
           />
-          <button type="submit">Sign in</button>
-        </fieldset>
+        </label>
+        <button type="submit" className="sign-in button-sign-in">
+          Войти
+        </button>
+        <div className="description-to-sign-up">
+          Нет аккаунта?
+          <Link to="../../auth/register" className="sign-up">
+            Зарегистрируйся!
+          </Link>
+        </div>
       </form>
       {isLoadingUser && <div>'Loading...'</div>}
-      {errorUser && console.log("errorUser: ", errorUser)}
-    </>
+      {errorUser && JSON.stringify(errorUser, null, 2)}
+    </div>
   );
 };
 

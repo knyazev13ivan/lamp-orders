@@ -7,7 +7,7 @@ import CreateNewLamp from "./pages/CreateNewLamp";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import NewOrder from "./pages/NewOrder";
-import Register from "./pages/Register";
+import Registration from "./pages/Registration";
 import "./styles/app.scss";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/new" element={<NewOrder />} />
           <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/register" element={<Register />} />
+          <Route path="/auth/register" element={<Registration />} />
           <Route path="/lamps" element={<CreateNewLamp />} />
         </Routes>
       </main>
