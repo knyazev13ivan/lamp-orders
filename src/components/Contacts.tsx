@@ -27,7 +27,7 @@ const Contacts: React.FC = () => {
         </svg>
       </a>
       <span className='source'>
-          create by <br />
+          source by <br />
           <a href="https://github.com/knyazev13ivan/lamp-orders">
             Github
           </a>

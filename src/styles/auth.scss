@@ -1,19 +1,58 @@
 @import "./variables.scss";
 
 .auth {
-  padding: 20px 30px;
   display: flex;
+  flex-direction: row;
+  justify-content: end;
+  
+  padding: 15px 10px;
 
   list-style: none;
 
   .link {
-    padding: 7px 10px;
+    display: inline-block;
+    padding: 4px 7px;
+    margin-left: 5px;
 
-    color: $text-color;
+    border-radius: 3px;
+    
     text-decoration: none;
+    cursor: pointer;
+  }
+}
 
-    &:hover {
-      color: $lite-red;
-    }
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 0px 5px;
+}
+
+.button-auth {
+  border: 2px solid $second-color;
+  color: $second-color;
+  
+  font-size: 1em;
+  font-weight: bold;
+
+  &:hover {
+    background-color: $button-hover-color;
+  }
+}
+
+.button-auth-reverse {
+  border: 2px solid $second-color;
+  color: $bg-color;
+  background-color: $second-color;
+
+  font-size: 1em;
+  font-weight: bold;
+
+  &:hover {
+    border: 2px solid $second-color;
+
+    background-color: $button-hover-color;
+    color: $second-color;
   }
 }

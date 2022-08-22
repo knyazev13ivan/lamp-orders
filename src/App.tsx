@@ -8,7 +8,6 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import NewOrder from "./pages/NewOrder";
 import Register from "./pages/Register";
-import UserProfile from "./pages/UserProfile";
 import "./styles/app.scss";
 
 function App() {
@@ -18,14 +17,15 @@ function App() {
         <Navigation />
         <Auth />
       </header>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/new" element={<NewOrder />} />
-        <Route path="/auth/login" element={<Login />} />
-        <Route path="/auth/register" element={<Register />} />
-        <Route path="/auth/me" element={<UserProfile />} />
-        <Route path="/lamps" element={<CreateNewLamp />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/new" element={<NewOrder />} />
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/register" element={<Register />} />
+          <Route path="/lamps" element={<CreateNewLamp />} />
+        </Routes>
+      </main>
       <footer>
         <Contacts />
       </footer>

@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginRequest, useSignInMutation } from "../store/auth/auth.api";
-import { setCredentials, logout } from "../store/auth/authSlice";
+import { setCredentials } from "../store/auth/authSlice";
 import { useAppDispatch } from "../store/hooks";
 
 const Login: React.FC = () => {
@@ -25,11 +25,6 @@ const Login: React.FC = () => {
     e.preventDefault();
     const user = await signIn(formState).unwrap();
     dispatch(setCredentials(user));
-    navigate("/");
-  };
-  
-  const handleClickLogout = () => {
-    dispatch(logout());
     navigate("/");
   };
 
@@ -56,9 +51,6 @@ const Login: React.FC = () => {
           />
           <button type="submit">Sign in</button>
         </fieldset>
-        <button type="button" onClick={handleClickLogout}>
-          Logout
-        </button>
       </form>
       {isLoadingUser && <div>'Loading...'</div>}
       {errorUser && console.log("errorUser: ", errorUser)}
