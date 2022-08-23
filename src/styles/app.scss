@@ -57,7 +57,7 @@ button {
     padding: 5px 5px;
   }
 
-  input {
+  input, textarea {
     padding: 9px 12px;
 
     border: 1px solid $input-bg-color;
@@ -78,4 +78,16 @@ button {
     }
   }
 
+}
+
+.priority-color-0 {
+  color: $priority-0;
+}
+
+.priority-color-1 {
+  color: $priority-1;
+}
+
+.priority-color-2 {
+  color: $priority-2;
 }

@@ -1,0 +1,125 @@
+@import "./variables.scss";
+
+.add-new-order-page {
+  margin: 50px auto;
+  padding: 30px;
+  
+  width: 800px;
+
+  box-shadow: $container-shadow;
+
+  .category-caption {
+    display: inline-block;
+    padding: 5px;
+  }
+
+  .lamps-list,
+  .priority-list {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .lamp-name,
+    .priority-status {
+      margin-right: 10px;
+      margin-bottom: 10px;
+
+      border-radius: 5px;
+
+      color: $text-color;
+      background-color: $input-bg-color;
+
+      font-size: 1.5em;
+
+      transition: all ease 0.2s;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      label {
+        display: inline-block;
+
+        width: 100%;
+        height: 100%;
+
+        border: 2px solid $input-bg-color;
+        // border-bottom: 2px solid $second-color;
+        border-radius: 5px;
+
+        padding: 5px 7px;
+
+        font-weight: bold;
+
+        cursor: pointer;
+      }
+
+      input {
+        display: none;
+
+        &:checked+label {
+          border-bottom: 2px solid $main-color;
+
+          color: $main-color;
+          background-color: $button-hover-color;
+        }
+      }
+    }
+  }
+
+  .priority-block {
+    display: inline-flex;
+    flex-direction: column;
+
+    margin-left: 50px;
+
+    .priority-list {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+  
+      .priority-status {
+        color: $text-color;
+        background-color: $input-bg-color;
+  
+        font-size: 1.3em;
+
+        label {
+          font-weight: normal;
+
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .number-field {
+    display: inline-flex;
+    max-width: 120px;
+    input {
+      text-align: end;
+    }
+  }
+
+  .button-add-new-lamp {
+    display: inline-block;
+
+    padding: 7px 10px 0px 10px;
+  }
+
+  .button-add {
+    margin-top: 20px;
+    padding: 7px 9px;
+
+    border: 2px solid $second-color;
+    color: $second-color;
+
+    font-size: 1em;
+    font-weight: bold;
+
+    &:hover {
+      color: $main-color;
+      border-color: $main-color;
+      background-color: $button-hover-color;
+    }
+  }
+}

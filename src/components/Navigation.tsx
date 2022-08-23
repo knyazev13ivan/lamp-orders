@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/navigation.scss";
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
   return (
     <nav className="nav-menu">
       <ul>

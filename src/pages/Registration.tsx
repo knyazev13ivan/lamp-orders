@@ -6,7 +6,7 @@ import { useAppDispatch } from "../store/hooks";
 import svgClose from "../icons/close.svg";
 import "../styles/registration.scss";
 
-const Registration = () => {
+const Registration: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
