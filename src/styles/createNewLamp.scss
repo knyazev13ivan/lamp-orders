@@ -1,0 +1,36 @@
+@import "./variables.scss";
+
+.create-new-lamp-page {
+  margin: 50px auto;
+  padding: 30px;
+
+  width: 1020px;
+
+  box-shadow: $container-shadow;
+
+  form {
+    display: flex;
+    flex-direction: row;
+    // justify-content: center;
+    flex-wrap: wrap;
+
+    .button-create-new-lamp {
+      width: 100%;
+
+      margin-top: 20px;
+      padding: 7px 9px;
+
+      border: 2px solid $second-color;
+      color: $second-color;
+
+      font-size: 1em;
+      font-weight: bold;
+
+      &:hover {
+        color: $main-color;
+        border-color: $main-color;
+        background-color: $button-hover-color;
+      }
+    }
+  }
+}

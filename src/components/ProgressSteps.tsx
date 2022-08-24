@@ -13,7 +13,7 @@ import { checkPartialComplite } from "../utils/checkPartialComplite";
 
 export interface IProgressStep {
   id: string;
-  step: "locksmith" | "painter" | "millwright";
+  step: string;
   operations: IOperation[];
 }
 

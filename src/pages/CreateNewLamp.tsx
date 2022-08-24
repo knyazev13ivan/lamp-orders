@@ -1,28 +1,17 @@
 import React, { FormEvent, useState } from "react";
 import SelectOperations from "../components/SelectOperations";
 import { useAppSelector } from "../store/hooks";
-import {
-  useCreateLampMutation,
-  useGetAllLampsQuery,
-  useGetLampQuery,
-} from "../store/lamps/lamp.api";
+import { useCreateLampMutation } from "../store/lamps/lamp.api";
 import { IOperationField } from "../store/operations/operationsSlice";
+import "../styles/createNewLamp.scss";
 
 const CreateNewLamp: React.FC = () => {
   const { locksmith, painter, millwright } = useAppSelector(
     (state) => state.operations
   );
 
-  const {
-    data: lamp,
-    isLoading: isLoadingGetLamp,
-    error: errorGetLamp,
-  } = useGetLampQuery("D-140");
-
-  const { data: allLamps } = useGetAllLampsQuery("");
-
   const [formState, setFormState] = useState<{ name: string }>({
-    name: "D-140",
+    name: "",
   });
 
   const handleChange = ({
@@ -50,18 +39,10 @@ const CreateNewLamp: React.FC = () => {
   };
 
   return (
-    <div>
-      <hr />
-      <h3>{allLamps && allLamps.map((lamp) => lamp.name).join(" | ")}</h3>
-      <hr />
-      {isLoadingGetLamp && "Loading..."}
-      {errorGetLamp && JSON.stringify(errorGetLamp)}
-      {lamp && "getLamp: " + lamp.name}
-      <br />
-      <br />
+    <div className="create-new-lamp-page">
       <form onSubmit={handleSubmitCreateLamp}>
-        <fieldset>
-          Lamp name
+        <label className="label-text-field name-field">
+          <span className="label-text">Название</span>
           <input
             type="text"
             value={formState.name}
@@ -69,14 +50,17 @@ const CreateNewLamp: React.FC = () => {
             name="name"
             id="nameField"
           />
-          <SelectOperations operations={locksmith} step="locksmith" />
-          <SelectOperations operations={painter} step="painter" />
-          <SelectOperations operations={millwright} step="millwright" />
-          <button type="submit">Create!</button>
-        </fieldset>
+        </label>
+
+        <SelectOperations operations={locksmith} step="locksmith" name="Изготовление корпуса"/>
+        <SelectOperations operations={painter} step="painter" name="Покраска"/>
+        <SelectOperations operations={millwright} step="millwright" name="Монтаж и сборка"/>
+
+        <button type="submit" className="button-create-new-lamp">
+          Создать!
+        </button>
       </form>
-      <hr />
-      <br />
+
       {isLoadingCreateLamp && "Creating lamp..."}
       {errorCreateLamp && JSON.stringify(errorCreateLamp)}
     </div>

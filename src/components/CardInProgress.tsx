@@ -95,9 +95,9 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
         <img src={svgDelete} alt="delete order" />
       </button>
 
-      <ProgressSteps operations={locksmith} id={_id} step="locksmith" />
-      <ProgressSteps operations={painter} id={_id} step="painter" />
-      <ProgressSteps operations={millwright} id={_id} step="millwright" />
+      <ProgressSteps operations={locksmith} id={_id} step="Изготовление корпуса" />
+      <ProgressSteps operations={painter} id={_id} step="Покраска" />
+      <ProgressSteps operations={millwright} id={_id} step="Монтаж и сборка" />
     </div>
   );
 };
