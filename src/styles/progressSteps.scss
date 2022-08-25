@@ -19,10 +19,15 @@
       display: inline-block;
       position: relative;
 
-      min-width: 113px;
+      min-width: 226px;
 
       font-size: 1.2em;
       transition: all 0.3s;
+    }
+
+    .progress-indicator {
+      padding-right: 5px;
+      font-size: 0.9em;
     }
 
     &:hover {
@@ -35,7 +40,7 @@
 
     img {
       padding: 2px 4px;
-      margin-bottom: -5px;
+      margin-bottom: -6px;
     }
   }
 
@@ -72,16 +77,14 @@
 }
 
 .partial-complite {
-  // background-image: linear-gradient(15deg, $green 0%, $green 35%, $text-color 45%);
-  background-image: repeating-linear-gradient(45deg, $green, $green 10px, $text-color 10px, $text-color 20px);
+  background-image: repeating-linear-gradient(45deg, $second-color, $second-color 10px, $text-color 10px, $text-color 20px);
   background-clip: text;
   color: transparent;
 
-  animation: hoverName 3s linear forwards infinite;
+  animation: hoverName 5s linear forwards infinite;
 }
 
 .complite {
-  // color: $lite-green;
   color: #999999;
 }
 
@@ -92,6 +95,6 @@
   }
 
   100% {
-    background-position-x: 113px;
+    background-position-x: 226px;
   }
 }

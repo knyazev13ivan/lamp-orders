@@ -82,6 +82,8 @@
 
     overflow: hidden;
 
+    transition: padding ease 0.1s;
+
     &::before {
       content: '';
       position: absolute;
@@ -94,7 +96,7 @@
       background-color: $text-color;
 
       transform: translateX(-101%);
-      transition: transform ease 0.3s;
+      transition: transform ease 0.2s;
     }
 
     &:hover::before {
@@ -108,8 +110,16 @@
   }
 
   &:hover {
+    .name {
+      color: $main-color;
+    }
+
     .delete-button {
       opacity: 1;
+    }
+
+    .start-order {
+      padding-left: 20px;
     }
   }
 }

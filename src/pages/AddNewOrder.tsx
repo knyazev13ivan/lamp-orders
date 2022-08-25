@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetAllLampsQuery } from "../store/lamps/lamp.api";
 import {
   IOrderInLine,
@@ -19,6 +19,8 @@ const AddNewOrder: React.FC = () => {
   const [createOrder, { error: createError }] = useCreateOrderInLineMutation();
   const { data: allLamps } = useGetAllLampsQuery("");
 
+  const navigate = useNavigate();
+
   const [formState, setFormState] = useState<INewOrder>({
     name: "",
     number: 1,
@@ -37,6 +39,8 @@ const AddNewOrder: React.FC = () => {
     e.preventDefault();
 
     await createOrder(formState as IOrderInLine);
+
+    navigate("/");
   };
 
   return (

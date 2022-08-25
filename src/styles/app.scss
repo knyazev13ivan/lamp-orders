@@ -20,13 +20,12 @@ main {
 
 footer {
   display: flex;
-  position: absolute;
-  bottom: 0;
+  align-items: flex-end;
 
-  margin: 0 auto;
-
-  padding-left: 10px;
   height: 50px;
+
+  padding-top: 70px;
+  padding-left: 10px;
 }
 
 button {

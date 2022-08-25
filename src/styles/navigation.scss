@@ -1,7 +1,7 @@
 @import "./variables.scss";
 
 .nav-menu {
-  padding: 20px 30px;
+  padding: 20px 10px;
 
   ul {
     display: flex;
@@ -9,18 +9,31 @@
     list-style: none;
 
     .link {
+      display: inline-flex;
+      align-items: center;
+
       padding: 7px 10px;
 
       color: $text-color;
+      
       text-decoration: none;
-
+      font-size: 1.2em;
+      
+      img {
+        width: 20px;
+        
+        margin-right: 10px;
+        
+        background-color: $button-hover-color;
+      }
+      
       &:hover {
-        color: $lite-red;
+        color: $main-color;
       }
     }
 
     .active {
-      border-bottom: 1px solid $lite-red;
+      border-bottom: 1px solid $main-color;
     }
   }
 }

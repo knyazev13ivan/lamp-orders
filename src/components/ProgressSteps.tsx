@@ -9,7 +9,7 @@ import svgCompliteCheck from "../icons/compliteCheck.svg";
 import svgUncompliteCheck from "../icons/uncompliteCheck.svg";
 import { checkFullComplite } from "../utils/checkFullComplite";
 import "../styles/progressSteps.scss";
-import { checkPartialComplite } from "../utils/checkPartialComplite";
+import { calcComplitedOperations } from "../utils/calcComplitedOperations";
 
 export interface IProgressStep {
   id: string;
@@ -41,11 +41,11 @@ const ProgressSteps: React.FC<IProgressStep> = ({ id, step, operations }) => {
   };
 
   const isFullComplite = checkFullComplite(opers.current);
-  const isPartialComplite = checkPartialComplite(opers.current);
+  const countCompitedOperations = calcComplitedOperations(opers.current);
   const stepNameClass = `step-name ${
     isFullComplite
       ? "full-complite"
-      : isPartialComplite
+      : countCompitedOperations
       ? "partial-complite"
       : ""
   }
@@ -62,11 +62,16 @@ const ProgressSteps: React.FC<IProgressStep> = ({ id, step, operations }) => {
           )}
         </h4>
 
-        {isHide ? (
-          <img src={svgArrowDown} alt="show operations" />
-        ) : (
-          <img src={svgArrowUp} alt="play" />
-        )}
+        <div>
+          <span className="progress-indicator">
+            {countCompitedOperations + "/" +operations.length}
+          </span>
+          {isHide ? (
+            <img src={svgArrowDown} alt="show operations" />
+          ) : (
+            <img src={svgArrowUp} alt="play" />
+          )}
+        </div>
       </div>
       <ul className={ProgressStepsListClass}>
         {opers.current &&

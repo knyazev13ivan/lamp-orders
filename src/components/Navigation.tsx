@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import svgPlus from "../icons/plus.svg";
 import "../styles/navigation.scss";
 
 const Navigation: React.FC = () => {
@@ -11,7 +12,7 @@ const Navigation: React.FC = () => {
             to=""
             className={({ isActive }) => (isActive ? "active " : "") + "link"}
           >
-            Статус заказов
+            Заказы
           </NavLink>
         </li>
         <li>
@@ -19,7 +20,8 @@ const Navigation: React.FC = () => {
             to="new"
             className={({ isActive }) => (isActive ? "active " : "") + "link"}
           >
-            Добавить новый заказ
+            <img src={svgPlus} alt="add new order" />
+            Новый заказ
           </NavLink>
         </li>
         <li>
@@ -27,7 +29,8 @@ const Navigation: React.FC = () => {
             to="lamps"
             className={({ isActive }) => (isActive ? "active " : "") + "link"}
           >
-            Создать новый тип
+            <img src={svgPlus} alt="add new lamp type" />
+            Новый тип
           </NavLink>
         </li>
       </ul>
