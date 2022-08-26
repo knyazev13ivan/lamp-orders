@@ -1,0 +1,41 @@
+@import "./variables.scss";
+
+.search {
+  position: relative;
+  padding: 20px 5px;
+  
+  input {
+    width: 150px;
+
+    padding: 5px 7px;
+
+    border: 1px solid $input-bg-color;
+    border-bottom: 1px solid $second-color;
+    border-radius: 3px;
+
+    color: $text-color;
+    background-color: $input-bg-color;
+
+    font-size: 1em;
+
+    &:focus,
+    &:active,
+    &:hover {
+      border: 1px solid $second-color;
+
+      background-color: $button-hover-color;
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 23px;
+    right: 8px;
+    width: 24px;
+    padding: 4px;
+
+    border-radius: 4px;
+    
+    background-color: $bg-color;
+  }
+}

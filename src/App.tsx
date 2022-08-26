@@ -10,12 +10,14 @@ import AddNewOrder from "./pages/AddNewOrder";
 import Registration from "./pages/Registration";
 import "./styles/app.scss";
 import ListInHistory from "./components/ListInHistory";
+import Search from "./components/Search";
 
 function App() {
   return (
     <>
       <header>
         <Navigation />
+        <Search />
         <Auth />
       </header>
       <main>

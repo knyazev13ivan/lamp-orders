@@ -5,9 +5,12 @@ import {
 } from "../store/orderInHistory/orderInHistory.api";
 import CardInHistory from "./CardInHistory";
 import "../styles/listInHistory.scss";
+import { useAppSelector } from "../store/hooks";
 
 const ListInHistory: React.FC = () => {
   const { data: orders, error, isLoading } = useGetOrdersInHistoryQuery("");
+
+  const searchValue = useAppSelector((state) => state.search.searchValue);
 
   return (
     <>
@@ -17,7 +20,16 @@ const ListInHistory: React.FC = () => {
         {orders &&
           orders
             .slice(0)
-            // .sort((a, b) => b.priority - a.priority)
+            .filter(
+              (order) =>
+                order.name.includes(searchValue) ||
+                order.text.includes(searchValue)
+            )
+            .sort(
+              (a, b) =>
+                new Date(b.createdAt).getTime() -
+                new Date(a.createdAt).getTime()
+            )
             .map((order: IOrderInHistory) => (
               <CardInHistory key={order._id} {...order} />
             ))}
