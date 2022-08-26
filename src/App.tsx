@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import AddNewOrder from "./pages/AddNewOrder";
 import Registration from "./pages/Registration";
 import "./styles/app.scss";
+import ListInHistory from "./components/ListInHistory";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/new" element={<AddNewOrder />} />
+          <Route path="/history" element={<ListInHistory />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Registration />} />
           <Route path="/lamps" element={<CreateNewLamp />} />

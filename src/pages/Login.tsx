@@ -11,8 +11,8 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const [formState, setFormState] = useState<LoginRequest>({
-    login: "",
-    password: "",
+    login: "guest",
+    password: "guest",
   });
 
   const [signIn, { isLoading: isLoadingUser, error: errorUser }] =

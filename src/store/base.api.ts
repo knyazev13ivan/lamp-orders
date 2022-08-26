@@ -13,6 +13,6 @@ export const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['OrderInLine', 'OrderInProgress'],
+  tagTypes: ['OrderInLine', 'OrderInProgress', "OrderInHistory"],
   endpoints: () => ({}),
 })

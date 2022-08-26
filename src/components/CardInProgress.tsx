@@ -13,6 +13,7 @@ import svgPlay from "../icons/play.svg";
 import svgPause from "../icons/pause.svg";
 import svgCompliteOrder from "../icons/compliteOrder.svg";
 import "../styles/cardInProgress.scss";
+import { useCreateOrderInHistoryMutation } from "../store/orderInHistory/orderInHistory.api";
 
 const CardInProgress: React.FC<IOrderInProgress> = ({
   _id,
@@ -29,6 +30,9 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
   const [deleteOrder] = useDeleteOrderInProgressMutation();
   const [toogleIsPause] = useToogleIsPauseMutation();
 
+  const [createOrderInHistory, { error: errorCreateOrderInHistory }] =
+    useCreateOrderInHistoryMutation();
+
   const handleClickDelete = async () => {
     if (window.confirm("Вы точно отменить заказ?")) {
       await deleteOrder(_id);
@@ -36,6 +40,7 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
   };
 
   const handleClickEndOrder = async () => {
+    await createOrderInHistory({ id: _id });
     await deleteOrder(_id);
   };
 
@@ -45,6 +50,8 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
 
   return (
     <div className={cardClass}>
+      {errorCreateOrderInHistory && JSON.stringify(errorCreateOrderInHistory)}
+
       <span className="priority">
         Приоритет:
         {order.priority === 0 && " На склад"}
@@ -95,7 +102,11 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
         <img src={svgDelete} alt="delete order" />
       </button>
 
-      <ProgressSteps operations={locksmith} id={_id} step="Изготовление корпуса" />
+      <ProgressSteps
+        operations={locksmith}
+        id={_id}
+        step="Изготовление корпуса"
+      />
       <ProgressSteps operations={painter} id={_id} step="Покраска" />
       <ProgressSteps operations={millwright} id={_id} step="Монтаж и сборка" />
     </div>

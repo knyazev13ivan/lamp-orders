@@ -17,6 +17,14 @@ const Navigation: React.FC = () => {
         </li>
         <li>
           <NavLink
+            to="history"
+            className={({ isActive }) => (isActive ? "active " : "") + "link"}
+          >
+            История
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="new"
             className={({ isActive }) => (isActive ? "active " : "") + "link"}
           >

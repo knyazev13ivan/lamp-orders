@@ -1,0 +1,78 @@
+@import "./variables.scss";
+
+.card-in-history {
+  position: relative;
+
+  // width: 350px;
+  width: 100%;
+
+  padding: 9px 12px;
+  margin-bottom: 15px;
+
+  border-radius: 5px;
+
+  background-color: #1d1d23;
+
+  box-shadow: -4px -4px 10px 0px #101015,
+    4px 4px 0px 0px $second-color;
+
+  h3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 4px 0px;
+  }
+
+  .name {
+    font-size: 1.4em;
+
+    color: $text-color;
+  }
+
+  .number {
+    font-weight: bold;
+  }
+
+  .time {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    font-size: 0.9em;
+
+    img {
+      margin-bottom: -2px;
+    }
+  }
+
+  .comment {
+    padding: 5px 0px;
+
+    color: $comment-color;
+
+    img {
+      padding: 2px 4px;
+      margin-bottom: -7px;
+    }
+  }
+
+  .delete-button {
+    position: absolute;
+    bottom: 7px;
+    right: 9px;
+
+    opacity: 0.2;
+  }
+
+  &:hover {
+    .name {
+      color: $main-color;
+    }
+
+    .delete-button {
+      opacity: 1;
+    }
+  }
+}
