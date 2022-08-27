@@ -77,11 +77,11 @@
 }
 
 .partial-complite {
-  background-image: repeating-linear-gradient(45deg, $second-color, $second-color 10px, $text-color 10px, $text-color 20px);
+  background-image: repeating-linear-gradient(45deg, $green, $green 10px, $text-color 10px, $text-color 20px);
   background-clip: text;
   color: transparent;
 
-  animation: hoverName 5s linear forwards infinite;
+  animation: hoverName 12s linear forwards infinite;
 }
 
 .complite {

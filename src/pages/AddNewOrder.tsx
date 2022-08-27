@@ -109,9 +109,8 @@ const AddNewOrder: React.FC = () => {
             cols={20}
             rows={5}
             onChange={handleChange}
-          >
-            {formState.text}
-          </textarea>
+            value={formState.text}
+          ></textarea>
         </label>
 
         <button type="submit" className="button-add">

@@ -34,4 +34,4 @@ const SelectOperations: React.FC<ISelectOperations> = ({
   );
 };
 
-export default SelectOperations;
+export default React.memo(SelectOperations);

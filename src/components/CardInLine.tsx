@@ -76,4 +76,4 @@ const CardInLine: React.FC<IOrderInLine> = ({
   );
 };
 
-export default CardInLine;
+export default React.memo(CardInLine);

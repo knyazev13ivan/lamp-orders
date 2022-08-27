@@ -50,4 +50,4 @@ const CardInHistory: React.FC<IOrderInHistory> = ({
   );
 };
 
-export default CardInHistory;
+export default React.memo(CardInHistory);

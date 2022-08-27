@@ -1,18 +1,17 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { logout } from "../store/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import "../styles/auth.scss";
 import UserProfile from "./UserProfile";
+import svgLogOut from "../icons/logOut.svg";
+import "../styles/auth.scss";
 
 const Auth: React.FC = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const isAuth = useAppSelector((state) => state.auth.token);
 
   const handleClickLogout = () => {
     dispatch(logout());
-    navigate("/");
   };
 
   return (
@@ -39,7 +38,7 @@ const Auth: React.FC = () => {
             onClick={handleClickLogout}
             className="button-auth logout"
           >
-            Выйти
+            <img src={svgLogOut} alt="log out"/>
           </button>
         </div>
       )}
@@ -47,4 +46,4 @@ const Auth: React.FC = () => {
   );
 };
 
-export default Auth;
+export default React.memo(Auth);

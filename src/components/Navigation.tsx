@@ -29,10 +29,10 @@ const Navigation: React.FC = () => {
             className={({ isActive }) => (isActive ? "active " : "") + "link"}
           >
             <img src={svgPlus} alt="add new order" />
-            Новый заказ
+            <span className="new-order-caption">Новый заказ</span>
           </NavLink>
         </li>
-        <li>
+        <li className="new-lamp-item-menu">
           <NavLink
             to="lamps"
             className={({ isActive }) => (isActive ? "active " : "") + "link"}

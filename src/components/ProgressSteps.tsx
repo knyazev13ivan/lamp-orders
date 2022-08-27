@@ -14,10 +14,11 @@ import { calcComplitedOperations } from "../utils/calcComplitedOperations";
 export interface IProgressStep {
   id: string;
   step: string;
+  name: string;
   operations: IOperation[];
 }
 
-const ProgressSteps: React.FC<IProgressStep> = ({ id, step, operations }) => {
+const ProgressSteps: React.FC<IProgressStep> = ({ id, step, name, operations }) => {
   const [toogleIsDone, { error }] = useToogleIsDoneMutation();
   const opers = useRef<IOperation[]>(operations);
 
@@ -56,7 +57,7 @@ const ProgressSteps: React.FC<IProgressStep> = ({ id, step, operations }) => {
       {error && JSON.stringify(error)}
       <div onClick={handleClickShowSteps} className="step-line">
         <h4 className={stepNameClass}>
-          {step}
+          {name}
           {isFullComplite && (
             <img src={svgCompliteCheck} alt="complite check" />
           )}
@@ -98,4 +99,4 @@ const ProgressSteps: React.FC<IProgressStep> = ({ id, step, operations }) => {
   );
 };
 
-export default ProgressSteps;
+export default React.memo(ProgressSteps);

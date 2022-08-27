@@ -105,12 +105,23 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
       <ProgressSteps
         operations={locksmith}
         id={_id}
-        step="Изготовление корпуса"
+        step="locksmith"
+        name="Изготовление корпуса"
       />
-      <ProgressSteps operations={painter} id={_id} step="Покраска" />
-      <ProgressSteps operations={millwright} id={_id} step="Монтаж и сборка" />
+      <ProgressSteps
+        operations={painter}
+        id={_id}
+        step="painter"
+        name="Покраска"
+      />
+      <ProgressSteps
+        operations={millwright}
+        id={_id}
+        step="millwright"
+        name="Монтаж и сборка"
+      />
     </div>
   );
 };
 
-export default CardInProgress;
+export default React.memo(CardInProgress);
