@@ -3,10 +3,10 @@
 .card-in-line {
   position: relative;
 
-  width: 350px;
+  width: 400px;
 
   padding: 9px 12px;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 
   border-radius: 5px;
 
@@ -137,4 +137,44 @@
 .priority-2 {
   box-shadow: -4px -4px 10px 0px #101015,
     4px 4px 0px 0px $priority-2;
+}
+
+@media only screen and (max-width: 1200px) {
+  .card-in-line {
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .card-in-line {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .card-in-line {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .card-in-line {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .card-in-line {
+    .name {
+      font-size: 1.2em;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .card-in-line {
+    .name {
+      font-size: 1em;
+    }
+  }
 }

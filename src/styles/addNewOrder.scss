@@ -3,7 +3,7 @@
 .add-new-order-page {
   margin: 50px auto;
   padding: 30px;
-  
+
   width: 800px;
 
   box-shadow: $container-shadow;
@@ -44,7 +44,6 @@
         height: 100%;
 
         border: 2px solid $input-bg-color;
-        // border-bottom: 2px solid $second-color;
         border-radius: 5px;
 
         padding: 5px 7px;
@@ -71,16 +70,14 @@
     display: inline-flex;
     flex-direction: column;
 
-    margin-left: 50px;
-
     .priority-list {
       justify-content: flex-start;
       flex-wrap: wrap;
-  
+
       .priority-status {
         color: $text-color;
         background-color: $input-bg-color;
-  
+
         font-size: 1.3em;
 
         label {
@@ -95,6 +92,9 @@
   .number-field {
     display: inline-flex;
     max-width: 120px;
+
+    margin-right: 50px;
+
     input {
       text-align: end;
     }
@@ -120,6 +120,31 @@
       color: $main-color;
       border-color: $main-color;
       background-color: $button-hover-color;
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .add-new-order-page {
+    width: 670px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .add-new-order-page {
+    width: 100%;
+
+    margin-top: 0px;
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .add-new-order-page {
+    padding: 10px;
+
+    .number-field {
+      margin-right: 10px;
     }
   }
 }

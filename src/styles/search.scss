@@ -2,10 +2,14 @@
 
 .search {
   position: relative;
-  padding: 24px 5px;
-  
+  margin-top: 24px;
+  margin-right: 20px;
+  padding: 0px 10px;
+
+  width: 150px;
+
   input {
-    width: 150px;
+    width: 100%;
 
     padding: 5px 7px;
 
@@ -29,13 +33,25 @@
 
   img {
     position: absolute;
-    top: 27px;
-    right: 8px;
+    top: 3px;
+    right: 13px;
     width: 24px;
     padding: 4px;
 
     border-radius: 4px;
-    
+
     background-color: $bg-color;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .search {
+    order: 1;
+
+    width: 100%;
+    margin-right: 0px;
+
+    margin-top: 0px;
+    padding: 0px 10px 10px;
   }
 }

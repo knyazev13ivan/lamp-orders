@@ -1,9 +1,9 @@
 import React from "react";
-import '../styles/contacts.scss'
+import "../styles/contacts.scss";
 
 const Contacts: React.FC = () => {
   return (
-    <div className='contacts'>
+    <div className="contacts">
       <a href="https://t.me/hauntar">
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
           <title />
@@ -26,12 +26,10 @@ const Contacts: React.FC = () => {
           </g>
         </svg>
       </a>
-      <span className='source'>
-          source by <br />
-          <a href="https://github.com/knyazev13ivan/lamp-orders">
-            Github
-          </a>
-        </span>
+      <span className="source">
+        source by <br />
+        <a href="https://github.com/knyazev13ivan/lamp-orders">Github</a>
+      </span>
       {/* <a href="https://github.com/knyazev13ivan">
         <svg
           data-name="Layer 1"

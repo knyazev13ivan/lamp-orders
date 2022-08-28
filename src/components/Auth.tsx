@@ -4,6 +4,7 @@ import { logout } from "../store/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import UserProfile from "./UserProfile";
 import svgLogOut from "../icons/logOut.svg";
+import svgLogIn from "../icons/logIn.svg";
 import "../styles/auth.scss";
 
 const Auth: React.FC = () => {
@@ -18,12 +19,15 @@ const Auth: React.FC = () => {
     <>
       {!isAuth && (
         <ul className="auth">
-          <li>
+          <li className="login">
             <Link to="auth/login" className="link button-auth">
-              Войти
+              <div className="login-button-img">
+                <img src={svgLogIn} alt="log in" />
+              </div>
+              <span className="login-button-caption">Войти</span>
             </Link>
           </li>
-          <li>
+          <li className="register">
             <Link to="auth/register" className="link button-auth-reverse">
               Регистрация
             </Link>
@@ -38,7 +42,7 @@ const Auth: React.FC = () => {
             onClick={handleClickLogout}
             className="button-auth logout"
           >
-            <img src={svgLogOut} alt="log out"/>
+            <img src={svgLogOut} alt="log out" />
           </button>
         </div>
       )}

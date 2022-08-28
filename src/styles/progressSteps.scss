@@ -56,11 +56,11 @@
     cursor: pointer;
 
     transition: all ease 0.2s;
-    
+
     &:nth-of-type(2n - 1) {
       background-color: #303040;
     }
-    
+
     &:hover {
       padding-left: +10px;
     }
@@ -96,5 +96,31 @@
 
   100% {
     background-position-x: 226px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .steps {
+    .step-line {
+      .step-name {
+        min-width: 175px;
+
+        font-size: 0.9em;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .steps {
+    .step-line {
+      .step-name {
+        font-size: 0.8em;
+      }
+
+      .progress-indicator {
+        font-size: 0.6em;
+      }
+    }
   }
 }

@@ -18,7 +18,12 @@ export interface IProgressStep {
   operations: IOperation[];
 }
 
-const ProgressSteps: React.FC<IProgressStep> = ({ id, step, name, operations }) => {
+const ProgressSteps: React.FC<IProgressStep> = ({
+  id,
+  step,
+  name,
+  operations,
+}) => {
   const [toogleIsDone, { error }] = useToogleIsDoneMutation();
   const opers = useRef<IOperation[]>(operations);
 
@@ -65,7 +70,7 @@ const ProgressSteps: React.FC<IProgressStep> = ({ id, step, name, operations }) 
 
         <div>
           <span className="progress-indicator">
-            {countCompitedOperations + "/" +operations.length}
+            {countCompitedOperations + "/" + operations.length}
           </span>
           {isHide ? (
             <img src={svgArrowDown} alt="show operations" />

@@ -79,12 +79,12 @@ const CardInProgress: React.FC<IOrderInProgress> = ({
           {isPause ? (
             <span>
               <img src={svgPlay} alt="play" />
-              Продолжить
+              Начать
             </span>
           ) : (
             <span>
               <img src={svgPause} alt="pause" />
-              Остановить
+              Стоп
             </span>
           )}
         </button>

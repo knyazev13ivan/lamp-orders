@@ -10,8 +10,6 @@
   img {
     width: 36px;
     height: 36px;
-
-    // margin-bottom: -2px;
   }
 
   .user-data {
@@ -28,5 +26,11 @@
     .login {
       color: $main-color;
     }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .user-profile {
+    display: none;
   }
 }

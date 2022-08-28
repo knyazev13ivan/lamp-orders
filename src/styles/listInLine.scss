@@ -1,5 +1,11 @@
 @import "./variables.scss";
 
 .list-in-line {
-  padding: 5px;
+  padding: 7px;
+}
+
+@media only screen and (max-width: 680px) {
+  .list-in-line {
+    width: 100%;
+  }
 }

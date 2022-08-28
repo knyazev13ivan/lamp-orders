@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetUserQuery } from "../store/auth/auth.api";
 import svgProfile from "../icons/profile.svg";
-import "../styles/userProfile.scss"
+import "../styles/userProfile.scss";
 
 const UserProfile: React.FC = () => {
   const { data: user, error, isLoading, isSuccess } = useGetUserQuery("");

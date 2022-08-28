@@ -4,14 +4,13 @@
   margin: 50px auto;
   padding: 30px;
 
-  width: 1020px;
+  width: 100%;
 
   box-shadow: $container-shadow;
 
   form {
     display: flex;
     flex-direction: row;
-    // justify-content: center;
     flex-wrap: wrap;
 
     .button-create-new-lamp {
@@ -32,5 +31,24 @@
         background-color: $button-hover-color;
       }
     }
+  }
+}
+
+
+@media only screen and (max-width: 991px) {
+  .create-new-lamp-page {
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .create-new-lamp-page {
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .create-new-lamp-page {
+    padding: 10px;
   }
 }

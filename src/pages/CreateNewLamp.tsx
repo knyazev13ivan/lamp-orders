@@ -52,9 +52,17 @@ const CreateNewLamp: React.FC = () => {
           />
         </label>
 
-        <SelectOperations operations={locksmith} step="locksmith" name="Изготовление корпуса"/>
-        <SelectOperations operations={painter} step="painter" name="Покраска"/>
-        <SelectOperations operations={millwright} step="millwright" name="Монтаж и сборка"/>
+        <SelectOperations
+          operations={locksmith}
+          step="locksmith"
+          name="Изготовление корпуса"
+        />
+        <SelectOperations operations={painter} step="painter" name="Покраска" />
+        <SelectOperations
+          operations={millwright}
+          step="millwright"
+          name="Монтаж и сборка"
+        />
 
         <button type="submit" className="button-create-new-lamp">
           Создать!

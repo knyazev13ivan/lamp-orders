@@ -6,16 +6,24 @@ body {
 
   color: $text-color;
   background-color: $bg-color;
+
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  width: 1020px;
 }
 
 main {
-  min-width: 950px;
+  width: 1020px;
 }
 
 footer {
@@ -56,7 +64,8 @@ button {
     padding: 5px 5px;
   }
 
-  input, textarea {
+  input,
+  textarea {
     padding: 9px 12px;
 
     border: 1px solid $input-bg-color;
@@ -89,4 +98,30 @@ button {
 
 .priority-color-2 {
   color: $priority-2;
+}
+
+@media only screen and (max-width: 1200px) {
+
+  header,
+  main {
+    width: 900px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  main {
+    width: 90vw;
+  }
+
+  header {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+
+    width: 90vw;
+  }
 }
