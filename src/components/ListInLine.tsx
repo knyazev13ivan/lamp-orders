@@ -29,6 +29,7 @@ const ListInLine: React.FC = () => {
             .map((order: IOrderInLine) => (
               <CardInLine key={order._id} {...order} />
             ))}
+        {!orders && !error && !isLoading && <h3>Нет заказов в очереди</h3>}
       </ul>
     </>
   );

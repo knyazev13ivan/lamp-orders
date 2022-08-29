@@ -29,6 +29,7 @@ const ListInProgress: React.FC = () => {
             .map((order: IOrderInProgress) => (
               <CardInProgress key={order._id} {...order} />
             ))}
+        {!orders && !error && !isLoading && <h3>Нет активных заказов</h3>}
       </ul>
     </>
   );

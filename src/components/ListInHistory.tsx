@@ -33,6 +33,7 @@ const ListInHistory: React.FC = () => {
             .map((order: IOrderInHistory) => (
               <CardInHistory key={order._id} {...order} />
             ))}
+        {!orders && !error && !isLoading && <h3>Нет заказов в истории</h3>}
       </ul>
     </>
   );
