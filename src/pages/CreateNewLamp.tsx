@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from "react";
+import Loader from "../components/Loader";
 import SelectOperations from "../components/SelectOperations";
 import { useAppSelector } from "../store/hooks";
 import { useCreateLampMutation } from "../store/lamps/lamp.api";
@@ -69,7 +70,7 @@ const CreateNewLamp: React.FC = () => {
         </button>
       </form>
 
-      {isLoadingCreateLamp && "Creating lamp..."}
+      {isLoadingCreateLamp && <Loader />}
       {errorCreateLamp && JSON.stringify(errorCreateLamp)}
     </div>
   );

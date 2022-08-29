@@ -5,6 +5,7 @@ import { setCredentials } from "../store/auth/authSlice";
 import { useAppDispatch } from "../store/hooks";
 import svgClose from "../icons/close.svg";
 import "../styles/login.scss";
+import Loader from "../components/Loader";
 
 const Login: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -71,7 +72,7 @@ const Login: React.FC = () => {
           </Link>
         </div>
       </form>
-      {isLoadingUser && <div>'Loading...'</div>}
+      {isLoadingUser && <Loader />}
       {errorUser && JSON.stringify(errorUser, null, 2)}
     </div>
   );

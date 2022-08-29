@@ -5,6 +5,7 @@ import { setCredentials } from "../store/auth/authSlice";
 import { useAppDispatch } from "../store/hooks";
 import svgClose from "../icons/close.svg";
 import "../styles/registration.scss";
+import Loader from "../components/Loader";
 
 const Registration: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -76,7 +77,7 @@ const Registration: React.FC = () => {
           Готово
         </button>
       </form>
-      {isLoadingUser && <div>'Loading...'</div>}
+      {isLoadingUser && <Loader />}
       {errorUser && JSON.stringify(errorUser)}
     </div>
   );

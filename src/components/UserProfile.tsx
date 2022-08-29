@@ -2,6 +2,7 @@ import React from "react";
 import { useGetUserQuery } from "../store/auth/auth.api";
 import svgProfile from "../icons/profile.svg";
 import "../styles/userProfile.scss";
+import Loader from "./Loader";
 
 const UserProfile: React.FC = () => {
   const { data: user, error, isLoading, isSuccess } = useGetUserQuery("");
@@ -9,7 +10,8 @@ const UserProfile: React.FC = () => {
   return (
     <div className="user-profile">
       <img src={svgProfile} alt="user profile icon" />
-      {isLoading && <div>Loading...</div>}
+      
+      {isLoading && <Loader />}
       {error && <div>Oh no, there was an error</div>}
 
       {isSuccess && (

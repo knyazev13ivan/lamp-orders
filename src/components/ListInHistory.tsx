@@ -6,6 +6,7 @@ import {
 import CardInHistory from "./CardInHistory";
 import "../styles/listInHistory.scss";
 import { useAppSelector } from "../store/hooks";
+import Loader from "./Loader";
 
 const ListInHistory: React.FC = () => {
   const { data: orders, error, isLoading } = useGetOrdersInHistoryQuery("");
@@ -15,7 +16,7 @@ const ListInHistory: React.FC = () => {
   return (
     <>
       {error && <div>Oh no, there was an error</div>}
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <Loader />}
       <ul className="list-in-history">
         {orders &&
           orders

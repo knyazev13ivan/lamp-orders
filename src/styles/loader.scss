@@ -1,0 +1,38 @@
+@import './variables.scss';
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  margin: 20px auto 5px;
+
+  width: 150px;
+  height: 50px;
+
+  border-radius: 50%;
+
+  background-image: repeating-linear-gradient(90deg, #ff9122 0%, #c02098 50%, #ff9122 100%);
+  background-clip: text;
+
+  animation: loader-animation linear 0.5s infinite;
+
+  .loader-caption {
+    color: transparent;
+
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+}
+
+@keyframes loader-animation {
+  0% {
+    background-position-x: 0px;
+  }
+
+  100% {
+    background-position-x: 150px;
+  }
+}

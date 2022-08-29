@@ -6,6 +6,7 @@ import {
 import CardInProgress from "./CardInProgress";
 import "../styles/listInProgress.scss";
 import { useAppSelector } from "../store/hooks";
+import Loader from "./Loader";
 
 const ListInProgress: React.FC = () => {
   const { data: orders, error, isLoading } = useGetOrdersInProgressQuery("");
@@ -15,7 +16,7 @@ const ListInProgress: React.FC = () => {
   return (
     <>
       {error && <div>Oh no, there was an error</div>}
-      {isLoading && "Loading..."}
+      {isLoading && <Loader />}
       <ul className="list-in-progress">
         {orders &&
           orders

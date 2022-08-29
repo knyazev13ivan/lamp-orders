@@ -6,6 +6,7 @@ import {
 import CardInLine from "./CardInLine";
 import "../styles/listInLine.scss";
 import { useAppSelector } from "../store/hooks";
+import Loader from "./Loader";
 
 const ListInLine: React.FC = () => {
   const { data: orders, error, isLoading } = useGetOrdersInLineQuery("");
@@ -15,7 +16,7 @@ const ListInLine: React.FC = () => {
   return (
     <>
       {error && <div>Oh no, there was an error</div>}
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <Loader />}
       <ul className="list-in-line">
         {orders &&
           orders
